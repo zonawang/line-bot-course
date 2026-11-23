@@ -1,14 +1,14 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { createServer } from 'node:http';
+import { foodReply, helpText } from './food.mjs';
 
-// 完成部署後，可以先改這裡，做出自己的回覆。
 export function replyText(event) {
-  if (event.type === 'follow') return '你好！我是你的第一個 LINE Bot，傳一段文字給我試試看。';
+  if (event.type === 'follow') return `你好！我是北科大美食小幫手。\n${helpText}`;
   if (event.type !== 'message') return null;
-  if (event.message?.type !== 'text') return '我現在會回覆文字，請傳一段文字給我。';
+  if (event.message?.type !== 'text') return `請用文字告訴我想吃什麼。\n${helpText}`;
   if (typeof event.message.text !== 'string') return null;
   // 保留 LINE 文字長度餘裕，並避免切斷 emoji 的 UTF-16 字元。
-  return `你說：${event.message.text}`.slice(0, 4900).replace(/[\uD800-\uDBFF]$/, '');
+  return foodReply(event.message.text).slice(0, 4900).replace(/[\uD800-\uDBFF]$/, '');
 }
 
 export function verifySignature(raw, signature, secret) {

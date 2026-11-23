@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createHmac } from 'node:crypto';
 import { once } from 'node:events';
 import { createBotServer, replyText, verifySignature } from '../src/bot.mjs';
+import { foodReply } from '../src/food.mjs';
 
 const secret = 'fake-channel-secret';
 const token = 'fake-channel-token';
@@ -23,14 +24,61 @@ async function app(t, fetchImpl = async () => Response.json({})) {
   };
 }
 
-test('學生可改寫的文字回覆、歡迎訊息與非文字提示', () => {
-  assert.equal(replyText({ type: 'message', message: { type: 'text', text: '你好' } }), '你說：你好');
-  assert.match(replyText({ type: 'follow' }), /第一個 LINE Bot/);
-  assert.match(replyText({ type: 'message', message: { type: 'image' } }), /文字/);
+const messageReply = (text) => replyText({ type: 'message', message: { type: 'text', text } });
+// 測試使用獨立店家資料，讓同學可以自由更換課程的推薦名單。
+const spots = [
+  { category: '麵食', name: '測試麵店', recommendation: '牛肉麵', address: '測試路1號' },
+  { category: '飯食', name: '測試飯店', recommendation: '便當', address: '測試路2號' },
+  { category: '咖啡廳', name: '測試咖啡店', recommendation: '咖啡', address: '測試路3號' },
+];
+const foodAnswer = (text) => foodReply(text, spots);
+
+test('一般美食問題會列出三家店、推薦內容與可辨識分店的地圖連結', () => {
+  const text = foodAnswer('北科大附近有什麼好吃？');
+  assert.match(text, /1\. 測試麵店/);
+  assert.match(text, /2\. 測試飯店/);
+  assert.match(text, /3\. 測試咖啡店/);
+  assert.match(text, /牛肉麵/);
+  const maps = [...text.matchAll(/https:\/\/www\.google\.com\/maps\/search\/\?[^\s]+/g)];
+  assert.equal(maps.length, 3);
+  assert.equal(new URL(maps[0][0]).searchParams.get('query'), '測試麵店 測試路1號');
+  assert.ok(text.length <= 4900);
+  assert.equal(text.isWellFormed(), true);
+});
+
+test('類別優先於一般美食關鍵字，也支援便當、咖啡與常見輸入形式', () => {
+  for (const query of ['想吃麵', '北科大附近有什麼好吃的麵？', '拉面', 'ＲＡＭＥＮ']) {
+    const text = foodAnswer(query);
+    assert.match(text, /1\. 測試麵店/);
+    assert.doesNotMatch(text, /測試飯店|測試咖啡店/);
+  }
+  for (const query of ['有便當推薦嗎？', '想吃飯', '便当']) {
+    const text = foodAnswer(query);
+    assert.match(text, /1\. 測試飯店/);
+    assert.doesNotMatch(text, /測試麵店|測試咖啡店/);
+  }
+  for (const query of ['有咖啡廳嗎？', '  C a f é  ', 'COFFEE']) {
+    const text = foodAnswer(query);
+    assert.match(text, /1\. 測試咖啡店/);
+    assert.doesNotMatch(text, /測試麵店|測試飯店/);
+  }
+  const both = foodAnswer('麵食或便當都可以');
+  assert.match(both, /測試麵店/);
+  assert.match(both, /測試飯店/);
+  assert.doesNotMatch(both, /測試咖啡店/);
+});
+
+test('歡迎、非文字與不支援的問題會提示問法；其他事件不回覆', () => {
+  assert.match(replyText({ type: 'follow' }), /北科大美食小幫手/);
+  assert.match(replyText({ type: 'message', message: { type: 'image' } }), /請用文字/);
   assert.equal(replyText({ type: 'unfollow' }), null);
-  const long = replyText({ type: 'message', message: { type: 'text', text: '😀'.repeat(4000) } });
-  assert.ok(long.length <= 4900);
-  assert.equal(long.isWellFormed(), true);
+  assert.equal(replyText({ type: 'message', message: { type: 'text' } }), null);
+  for (const query of ['明天天氣如何？', '', '😀'.repeat(4000)]) {
+    const text = messageReply(query);
+    assert.match(text, /還沒找到符合的推薦/);
+    assert.match(text, /北科大附近有什麼好吃/);
+    assert.doesNotMatch(text, /maps\/search/);
+  }
 });
 
 test('簽章使用原始內容；改變空白、錯誤 secret、缺少簽章都不通過', () => {
@@ -61,7 +109,7 @@ test('完整已簽章訊息會用正確權杖呼叫 LINE reply API', async (t) =
   const calls = [];
   const f = await app(t, async (url, options) => { calls.push({ url, options }); return Response.json({}); });
   const raw = JSON.stringify({ events: [
-    { type: 'message', replyToken: 'reply-1', message: { type: 'text', text: '我的 Bot 成功了' } },
+    { type: 'message', replyToken: 'reply-1', message: { type: 'text', text: '北科大附近有什麼好吃？' } },
     { type: 'unfollow' },
   ] });
   assert.equal((await f.post(raw)).status, 200);
@@ -69,7 +117,7 @@ test('完整已簽章訊息會用正確權杖呼叫 LINE reply API', async (t) =
   assert.equal(calls[0].url, 'https://api.line.me/v2/bot/message/reply');
   assert.equal(calls[0].options.headers.Authorization, `Bearer ${token}`);
   assert.deepEqual(JSON.parse(calls[0].options.body), {
-    replyToken: 'reply-1', messages: [{ type: 'text', text: '你說：我的 Bot 成功了' }],
+    replyToken: 'reply-1', messages: [{ type: 'text', text: messageReply('北科大附近有什麼好吃？') }],
   });
 });
 
