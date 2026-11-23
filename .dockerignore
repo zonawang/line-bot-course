@@ -1,0 +1,10 @@
+.git
+.env
+.env.*
+local.env.yaml
+client_secret*.json
+credentials*.json
+node_modules
+assets
+docs
+test

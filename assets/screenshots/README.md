@@ -1,6 +1,6 @@
 # 圖片來源
 
-本目錄保留 [kkdai/bwai2026-sample 的 README](https://github.com/kkdai/bwai2026-sample/blob/10f0bb3d35452db35c192c0ba9e2c63e89777f30/README.md) 使用的 12 張操作截圖與 1 張主圖。圖片依本課程操作步驟重新編排，原始內容與解析度未變更。
+本目錄保留 [kkdai/bwai2026-sample 的 README](https://github.com/kkdai/bwai2026-sample/blob/10f0bb3d35452db35c192c0ba9e2c63e89777f30/README.md) 使用的 12 張操作截圖與 1 張主圖。入門版課堂使用主圖與 5 張 LINE 操作截圖；其餘原圖保留供查閱。圖片原始內容與解析度未變更。
 
 圖中的專案名稱、電子郵件及介面狀態是原教材的示例；請依課程文字指示，填寫自己的帳號與活動專案資訊。
 
