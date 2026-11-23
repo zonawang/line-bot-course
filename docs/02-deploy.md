@@ -18,13 +18,49 @@ git switch -c course-2026 10f0bb3d35452db35c192c0ba9e2c63e89777f30
 
 這組 OAuth 設定用來讓使用者授權 Bot 存取 Google Drive。
 
-1. 在正確活動專案中開啟 [Google Auth Platform](https://console.cloud.google.com/auth/overview)。
-2. 依「品牌資訊／Branding」或初始設定流程，填寫應用程式名稱、支援信箱及聯絡信箱。
-3. 個人 Gmail 練習通常使用「外部／External」使用者類型；組織帳號依活動安排。
-4. 在「目標對象／Audience」維持測試狀態，加入自己及活動需要的測試使用者。
-5. 在「資料存取權／Data Access」確認本範例要求的 Drive 範圍：`https://www.googleapis.com/auth/drive.file`。
-6. 到「用戶端／Clients」建立 OAuth Client，應用程式類型選「網頁應用程式／Web application」。
-7. 記下 Client ID 與 Client Secret。取得 Cloud Run 網址後，再補上授權重新導向 URI。
+以下截圖沿用原教材，圖中的專案與電子郵件請換成自己的資訊；逐張出處見[圖片來源](../assets/screenshots/README.md)。
+
+### 2.1 開啟 Google Auth Platform
+
+在正確活動專案中開啟 [Google Auth Platform](https://console.cloud.google.com/auth/overview)。尚未設定時，按「開始」。
+
+<img src="../assets/screenshots/oauth-overview.png" alt="Google Auth Platform 尚未設定時的總覽頁與開始按鈕" width="960">
+
+### 2.2 填寫應用程式資訊
+
+依「品牌資訊／Branding」或初始設定流程，填寫應用程式名稱與自己的支援信箱。
+
+<img src="../assets/screenshots/oauth-app-information.png" alt="Google OAuth 應用程式資訊表單，包含名稱與使用者支援電子郵件" width="620">
+
+### 2.3 選擇目標對象並完成聯絡資訊
+
+個人 Gmail 練習通常使用「外部／External」使用者類型；組織帳號依活動安排。
+
+<img src="../assets/screenshots/oauth-audience.png" alt="Google OAuth 目標對象表單，顯示內部與外部使用者類型" width="594">
+
+填寫自己的聯絡信箱，依畫面完成建立。
+
+<img src="../assets/screenshots/oauth-contact-information.png" alt="Google OAuth 聯絡資訊表單，填寫開發者聯絡信箱" width="566">
+
+在「目標對象／Audience」維持測試狀態，加入自己及活動需要的測試使用者。
+
+<img src="../assets/screenshots/oauth-publishing-status.png" alt="Google OAuth 目標對象頁，顯示測試發布狀態與發布應用程式按鈕" width="612">
+
+上圖用來辨識發布狀態的位置。本課程使用「測試」狀態並加入測試使用者完成授權。
+
+在「資料存取權／Data Access」確認本範例要求的 Drive 範圍：`https://www.googleapis.com/auth/drive.file`。
+
+### 2.4 建立 OAuth 網頁用戶端
+
+到「用戶端／Clients」建立 OAuth Client；也可由「API 和服務」→「憑證」→「建立憑證」→「OAuth 用戶端 ID」進入。
+
+<img src="../assets/screenshots/oauth-create-client.png" alt="Google Cloud 憑證頁的建立憑證選單，選擇 OAuth 用戶端 ID" width="850">
+
+應用程式類型選「網頁應用程式／Web application」，並填入自己的用戶端名稱。
+
+<img src="../assets/screenshots/oauth-web-client.png" alt="Google OAuth 網頁用戶端建立表單，包含應用程式類型、名稱與已授權的重新導向 URI" width="835">
+
+建立後記下 Client ID 與 Client Secret。上圖下方的「已授權的重新導向 URI」，等第 6 節取得 Cloud Run 網址後，再填入自己的網址加 `/oauth/callback`。
 
 初次練習可以使用測試狀態完成授權；正式對外提供服務時，再依 Google 的發布、驗證及資料使用要求辦理。Gemini CLI 的登入另依工具自己的授權流程完成。
 

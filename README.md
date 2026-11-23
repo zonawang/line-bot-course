@@ -4,6 +4,10 @@
 
 本教材參考 [kkdai/BwAI-2026](https://github.com/kkdai/BwAI-2026) 與 [kkdai/bwai2026-sample](https://github.com/kkdai/bwai2026-sample)，補上活動額度領取、第一次使用 Google Cloud 的操作及部署檢查。範例程式使用 Go；Gemini CLI 用來協助理解程式與操作工具。AI 聊天功能可在完成本課程後另外擴充。
 
+<img src="assets/screenshots/course-overview.png" alt="原教材的 LINE Bot 雲端檔案備份示意圖" width="420">
+
+本教材沿用原教材的插圖與操作截圖，完整出處見[圖片來源](assets/screenshots/README.md)。圖中的專案名稱、電子郵件與介面狀態是原教材示例；操作時請依文字步驟，使用自己的帳號與活動專案。
+
 > [!IMPORTANT]
 > **活動當天的 Google Cloud 入口：[g.dev/credits/adxtw-bdc-linebot-nov26](https://g.dev/credits/adxtw-bdc-linebot-nov26)**
 >
@@ -46,7 +50,13 @@ flowchart TD
 
 1. 開啟 [LINE Official Account Manager](https://manager.line.biz/)，使用 LINE 帳號登入。
 2. 依畫面建立官方帳號，填寫名稱、聯絡信箱及用途等資料。
+
+<img src="assets/screenshots/line-create-account.png" alt="LINE Official Account Manager 左側的建立官方帳號入口" width="289">
+
 3. 進入該帳號的「設定」→「Messaging API」，啟用 Messaging API。
+
+<img src="assets/screenshots/line-enable-messaging-api.png" alt="LINE 官方帳號設定中的啟用 Messaging API 按鈕" width="960">
+
 4. 選擇或建立管理此服務的 Provider。公司專案請依公司安排選擇；個人練習可建立自己的 Provider。
 5. 到 [LINE Developers Console](https://developers.line.biz/console/)，開啟對應 Provider 下的 Messaging API Channel。
 
@@ -61,9 +71,21 @@ Provider 綁定後無法任意更換。現在的建立順序是先有官方帳�
 
 先保管在自己的本機設定中，部署時再填入。環境變數大小寫依範例程式為準；本課程已核對[指定版本的程式](https://github.com/kkdai/bwai2026-sample/blob/10f0bb3d35452db35c192c0ba9e2c63e89777f30/main.go)。
 
+**Channel secret：** 在 Basic settings 分頁向下找到此欄位。
+
+<img src="assets/screenshots/line-channel-secret.png" alt="LINE Developers Basic settings 中的 Channel secret 欄位，原圖金鑰已遮蔽" width="677">
+
+**Channel access token：** 在 Messaging API 分頁找到 long-lived token 欄位，尚未發行時先按 Issue。
+
+<img src="assets/screenshots/line-channel-access-token.png" alt="LINE Developers Messaging API 分頁中的 Channel access token long-lived 欄位，原圖權杖已遮蔽" width="412">
+
 ### 3. 設定官方帳號回應方式
 
 在官方帳號後台的回應設定中，關閉「自動回應訊息」與「加入好友歡迎訊息」，讓程式統一回覆。選項名稱可能隨後台更新調整。
+
+<img src="assets/screenshots/line-response-settings.png" alt="LINE 官方帳號的回應設定頁，可調整歡迎訊息、Webhook 與自動回應訊息" width="960">
+
+上圖示範設定位置。請將圖中的「加入好友的歡迎訊息」與「自動回應訊息」切換為關閉；完成部署後再開啟 Webhook。
 
 Webhook URL 與「Use webhook」會在取得 Cloud Run 網址後設定。此範例先使用一對一聊天，關閉加入群組功能。
 
