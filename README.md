@@ -117,6 +117,9 @@ LINE Webhook URL：https://你的服務網址/webhook
 
 開啟健康檢查網址，看到 `"status":"ok"` 代表伺服器已啟動。
 
+<img width="1494" height="708" alt="image" src="https://github.com/user-attachments/assets/70a163ff-98d6-4de8-81a8-9a17efd0c6a2" />
+
+
 ## 4. 接通 LINE 並測試
 
 1. 回到 [LINE Developers Console](https://developers.line.biz/console/) → 你的 Channel → Messaging API。
