@@ -6,7 +6,6 @@
 
 這個 repo 已附上可直接部署的程式，使用預先整理的店家資料與關鍵字配對，不需要 AI 或地圖 API 金鑰。同學完成部署後，可以換成自己推薦的店家。
 
-<img src="assets/screenshots/course-overview.png" alt="LINE Bot 示意圖，沿用原教材插圖" width="280">
 
 > [!IMPORTANT]
 > **活動當天入口：[g.dev/credits/adxtw-bdc-linebot-nov26](https://g.dev/credits/adxtw-bdc-linebot-nov26)**
