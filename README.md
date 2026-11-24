@@ -168,6 +168,8 @@ LINE Webhook URL：https://你的服務網址/webhook
 2. 將終端機顯示的 **LINE Webhook URL** 貼進 Webhook URL 欄位，網址結尾是 `/webhook`。
 3. 按 **Verify**，確認看到 **Success**。
 4. 開啟 **Use webhook**。
+   <img width="1506" height="492" alt="image" src="https://github.com/user-attachments/assets/21d60122-e42f-4be8-93b1-f51ca12d3d53" />
+
 5. 掃描該 Channel 的 QR code，把自己的 Bot 加為好友。
 6. 傳送「北科大附近有什麼好吃？」。
 
