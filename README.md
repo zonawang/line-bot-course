@@ -104,7 +104,9 @@ flowchart LR
 git clone https://github.com/zonawang/line-bot-course.git
 cd line-bot-course
 ```
-
+7. 這時候你可能會出現這個畫面
+   <img width="1494" height="760" alt="image" src="https://github.com/user-attachments/assets/927816a6-403a-44cc-8a09-a381b68e9a70" />
+點中間的網址，去啟用就可以開始使用
 
 
 cloudshell edit local.env.yaml
