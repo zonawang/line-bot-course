@@ -95,7 +95,10 @@ flowchart LR
 
 
 4. cloud shell 輸入 "agy", 開啟 google Antigravity
-5. 在終端機輸入：請幫我跑這段
+5. 更改model, 選 Neon
+<img width="1488" height="772" alt="image" src="https://github.com/user-attachments/assets/26b64f8e-b228-4939-8cde-19b15e95e255" />
+
+6. 在終端機輸入：請幫我跑這段
 
 ```bash
 git clone https://github.com/zonawang/line-bot-course.git
