@@ -111,13 +111,15 @@ cd line-bot-course
 
 ## 3. 填入金鑰並部署
 
-在 Cloud Shell 終端機切換到專案資料夾、建立自己的設定檔並開啟編輯器。如果已在 `line-bot-course` 資料夾內，請略過第一行：
+完成上一節的 `git clone` 後，在 **Cloud Shell 終端機**貼上以下整段指令，切換到專案資料夾、建立自己的設定檔並開啟編輯器：
 
 ```bash
-cd line-bot-course
+cd ~/line-bot-course
 cp local.env.example.yaml local.env.yaml
 cloudshell edit local.env.yaml
 ```
+
+`~` 代表你的家目錄。不論目前在家目錄，還是已經在 `line-bot-course` 資料夾內，都可以直接執行整段，不需要略過第一行。
 
 把兩個佔位值換成剛才取得的金鑰，保留欄位名稱及引號，儲存檔案：
 
