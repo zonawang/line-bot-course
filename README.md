@@ -86,6 +86,14 @@ flowchart LR
 1. 活動開放後，進入[指定領取連結](https://g.dev/credits/adxtw-bdc-linebot-nov26)，以活動允許的帳號完成領取。
 2. 開啟 [Google Cloud Console](https://console.cloud.google.com/)，選擇活動實際使用的專案，記下 **Project ID**。
 3. 點 Console 右上角的 **啟用 Cloud Shell** 終端機圖示，依提示開啟並授權。
+   <img width="1482" height="766" alt="image" src="https://github.com/user-attachments/assets/4da490e4-07d7-4a63-9775-a7b89676a0d1" />
+   <img width="1489" height="773" alt="image" src="https://github.com/user-attachments/assets/0720b5dc-65f7-4b59-91d1-d912e8ca20be" />
+   <img width="1495" height="756" alt="image" src="https://github.com/user-attachments/assets/cb890bad-b6a5-4c8e-a2e1-e053a1a7a719" />
+   <img width="1500" height="763" alt="image" src="https://github.com/user-attachments/assets/497611de-4fb7-4cb8-b40d-aafee307a2f4" />
+   <img width="1502" height="762" alt="image" src="https://github.com/user-attachments/assets/9bd380dc-81fd-4d5b-b9ec-e33f76288f92" />
+   <img width="1498" height="763" alt="image" src="https://github.com/user-attachments/assets/817f0c8a-c72d-4f10-a743-fc62f7639b02" />
+
+
 4. cloud shell 輸入 "agy", 開啟 google Antigravity
 5. 在終端機輸入：請幫我跑這段
 
