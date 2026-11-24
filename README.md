@@ -120,6 +120,10 @@ cloudshell edit local.env.yaml
 ```
 
 `~` 代表你的家目錄。不論目前在家目錄，還是已經在 `line-bot-course` 資料夾內，都可以直接執行整段，不需要略過第一行。
+這時候會看到這個畫面
+<img width="1502" height="633" alt="image" src="https://github.com/user-attachments/assets/d6c0248b-87a6-47d7-a529-edf06a46fadc" />
+
+
 
 把兩個佔位值換成剛才取得的金鑰，保留欄位名稱及引號，儲存檔案：
 
