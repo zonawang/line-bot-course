@@ -216,6 +216,11 @@ cloudshell edit src/food.mjs
 - [ ] 我的 Cloud Run 服務健康檢查正常。
 - [ ] 我問「北科大附近有什麼好吃？」，手機能收到店家推薦與地圖連結。
 
+## 6. 進階延伸- 自己新增一個新功能（完成後找Zona, 免費送你一組貼圖）
+可直接下prompt: 如果我想再加一個新功能，你建議加什麼？
+<img width="984" height="417" alt="image" src="https://github.com/user-attachments/assets/9d4a37a8-1cf5-4629-b4b5-ed04bfd902a6" />
+
+
 ## 需要協助時
 
 - [活動專案與帳務說明](docs/01-google-cloud.md)
