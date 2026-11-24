@@ -86,7 +86,7 @@ flowchart LR
 1. 活動開放後，進入[指定領取連結](https://g.dev/credits/adxtw-bdc-linebot-nov26)，以活動允許的帳號完成領取。
 2. 開啟 [Google Cloud Console](https://console.cloud.google.com/)，選擇活動實際使用的專案，記下 **Project ID**。
 3. 點 Console 右上角的 **啟用 Cloud Shell** 終端機圖示，依提示開啟並授權。
-4. 在下方終端機貼上：
+4. 進入agy,在下方終端機貼上：請幫我跑這段
 
 ```bash
 git clone https://github.com/zonawang/line-bot-course.git
