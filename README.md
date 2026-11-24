@@ -182,8 +182,9 @@ LINE Webhook URL：https://你的服務網址/webhook
 2. 鬍鬚張 忠孝新生店（飯食）
 3. 伯朗咖啡館 科大概念店（咖啡廳）
 ```
+<img width="985" height="724" alt="image" src="https://github.com/user-attachments/assets/fa7919d6-dd10-4bc5-ac11-66513057666d" />
 
-**收到這則回覆，就完成這堂課的核心目標。** 健康檢查和 Verify 分別只確認伺服器及 Webhook；手機實際收到回覆，才代表整條流程接通。
+**恭喜你，你已經完成這堂課的核心目標。** 健康檢查和 Verify 分別只確認伺服器及 Webhook；手機實際收到回覆，才代表整條流程接通。
 
 接著可以試試：
 
