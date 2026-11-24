@@ -93,31 +93,8 @@ git clone https://github.com/zonawang/line-bot-course.git
 cd line-bot-course
 ```
 
-接著設定專案資訊。將 `YOUR_PROJECT_ID` 改成自己的實際 Project ID：
 
-```bash
-export COURSE_PROJECT_ID="YOUR_PROJECT_ID"
-export COURSE_SERVICE="linebot-course"
-export COURSE_REGION="asia-east1"
-gcloud config set project "$COURSE_PROJECT_ID"
-```
 
-`asia-east1` 是台灣區域；若活動指定其他區域，依現場安排修改。共用專案的同學，請將服務名稱改成自己的英文代號，例如 `linebot-alice`，避免同名覆蓋。
-
-第一次準備這個專案時執行：
-
-```bash
-bash scripts/setup-cloud.sh "$COURSE_PROJECT_ID"
-```
-
-腳本會開通部署服務，並準備建置及執行所需權限。若講師已準備好專案，可依現場指示跳過；遇到權限或帳務錯誤，請工作人員協助。活動領取與帳務問題見[活動專案說明](docs/01-google-cloud.md)。
-
-## 3. 填入金鑰並部署
-
-建立自己的設定檔並開啟編輯器：
-
-```bash
-cp local.env.example.yaml local.env.yaml
 cloudshell edit local.env.yaml
 ```
 
@@ -130,13 +107,8 @@ LINE_CHANNEL_ACCESS_TOKEN: "YOUR_LINE_CHANNEL_ACCESS_TOKEN"
 
 設定檔已從 Git、來源上傳與 Docker 建置內容排除。課程程式只需要這兩個值。
 
-回到終端機執行：
 
-```bash
-bash scripts/deploy.sh "$COURSE_PROJECT_ID" "$COURSE_SERVICE" "$COURSE_REGION"
-```
-
-等待建置與部署完成。終端機會顯示：
+輸入完成後，等待建置與部署完成。終端機會顯示：
 
 ```text
 健康檢查：https://你的服務網址/health
