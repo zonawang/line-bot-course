@@ -98,7 +98,7 @@ flowchart LR
 5. 更改model, 選 Neon
 <img width="1488" height="772" alt="image" src="https://github.com/user-attachments/assets/26b64f8e-b228-4939-8cde-19b15e95e255" />
 
-6. 在終端機輸入：請幫我跑這段
+6. 在 **Antigravity (agy) 對話框**輸入「請幫我跑這段」，並貼上以下指令：
 
 ```bash
 git clone https://github.com/zonawang/line-bot-course.git
@@ -109,6 +109,13 @@ cd line-bot-course
 點中間的網址，去啟用就可以開始使用
 
 
+## 3. 填入金鑰並部署
+
+在 Cloud Shell 終端機切換到專案資料夾、建立自己的設定檔並開啟編輯器。如果已在 `line-bot-course` 資料夾內，請略過第一行：
+
+```bash
+cd line-bot-course
+cp local.env.example.yaml local.env.yaml
 cloudshell edit local.env.yaml
 ```
 
@@ -122,7 +129,22 @@ LINE_CHANNEL_ACCESS_TOKEN: "YOUR_LINE_CHANNEL_ACCESS_TOKEN"
 設定檔已從 Git、來源上傳與 Docker 建置內容排除。課程程式只需要這兩個值。
 
 
-輸入完成後，等待建置與部署完成。終端機會顯示：
+填好金鑰並儲存後，在 **Antigravity (agy) 對話框**輸入以下內容，將 `YOUR_PROJECT_ID` 換成自己的實際 Project ID：
+
+```text
+我已填好並儲存 line-bot-course/local.env.yaml。請幫我將這個專案部署到 Google Cloud Run，Project ID 是 YOUR_PROJECT_ID，服務名稱是 linebot-course，區域是 asia-east1。若尚未完成雲端環境準備，請先執行 bash scripts/setup-cloud.sh，再使用 bash scripts/deploy.sh 部署，執行時請帶入對應參數。完成後請提供健康檢查網址與 LINE Webhook URL。
+```
+
+也可以直接在 Cloud Shell 終端機執行。請確認目前位於 `line-bot-course` 資料夾，並將下列兩行的 `YOUR_PROJECT_ID` 換成自己的實際 Project ID：
+
+```bash
+bash scripts/setup-cloud.sh "YOUR_PROJECT_ID"
+bash scripts/deploy.sh "YOUR_PROJECT_ID" "linebot-course" "asia-east1"
+```
+
+若講師已完成雲端環境準備，可略過 `setup-cloud.sh`。共用專案的同學，請將服務名稱 `linebot-course` 改成自己的英文代號，例如 `linebot-alice`；若活動指定其他區域，請一併修改 `asia-east1`。
+
+等待建置與部署完成。終端機會顯示：
 
 ```text
 健康檢查：https://你的服務網址/health
