@@ -9,6 +9,8 @@
 
 > [!IMPORTANT]
 > **活動當天入口：[g.dev/credits/adxtw-bdc-linebot-nov26](https://g.dev/credits/adxtw-bdc-linebot-nov26)**
+> 
+> （備案：https://console.cloud.google.com/iam-admin/iam?organizationId=0&project=zona-515802）
 >
 > 活動尚未開放時，先完成 LINE 帳號準備。領取額度、專案提供方式、有效期限及權限，以活動開放後的頁面與現場說明為準。
 
